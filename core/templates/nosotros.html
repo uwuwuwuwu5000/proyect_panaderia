@@ -1,0 +1,91 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Nosotros {% endblock %}
+
+{% block active-nosotros %}  
+<a class="nav-link active" href="{% url 'nosotros' %}">Nosotros</a>
+{% endblock %}
+
+{% block body_f %} onload="mostrarComentarios()" {% endblock %}
+{% block content %}
+        <div class="container ">
+          <div class="row">
+            <img class="mx-auto d-block img-fluid" src="{% static 'img/Bakery_Final.png' %}" alt="logo" style="max-width: 500px;">
+          </div>
+           <!-- <img src="img/chef_transparent.png" alt="chef" class="img-fluid float-lg-end chef"> Mod para entrega final -->
+            <div class="row row-cols-1">
+              <div class="row">
+                <div class="col-lg-8 align-self-center">
+                  <h1>¿Quiénes somos?</h1>
+                  <p class="text-start">En El Zorzal somos aprendices pero también maestros, desde nuestra determinación logramos preparar una variedad de productos que se extiende
+                    con el tiempo pero también queremos compartir éste aprendizaje para quienes también quieran iniciarse en el arte de la panadería. Te invitamos a 
+                    revisar nuestros productos y a que participes de nuestros cursos, para que tú también puedas cocinar sabrosas creaciones desde tu hogar.
+                  </p>
+                </div>
+                <div class="col">
+                  <img src="{% static 'img/chef_transparent.png' %}" alt="chef" class="img-fluid float-lg-end chef mx-auto d-block">
+                </div>
+              </div>
+                <div class="col">
+                  <h1>Visión</h1>
+                  <p class="text-start">En la panadería El Zorzal nos esforzamos por aprender y darte productos de calidad a un buen precio. 
+                    La especialidad de nuestra panadería es la variedad de panes que puede ofrecerte durante el día, 
+                    variando desde pan de masa madre, la clásica marraqueta y muchas más.</p>
+                </div>
+                <div class="col">
+                  <h1>Misión</h1>
+                  <p class="text-start">Nuestra panadería tiene un compromiso ambientalista, en donde nos esforzamos para conseguir un desarrollo
+                     sustentable y circular. Entre las misiones que tenemos se encuentran reducir el desperdicio, incentivar el uso de envasado reciclable,
+                      y la enseñanza de técnicas de panadería para desarrollarlas en el mismo hogar.</p>
+                </div>
+                <div class="col pb-5">
+                  <h1>Contacto</h1>
+                  <h4>Escríbenos a: </h4>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Correo Electrónico: </b>elzorzalpan@gmail.com</li>
+                    <li class="list-group-item"><b>Teléfono: </b>+56 9 7125-3153</li>
+                  </ul>
+                  <h4>Visita nuestras redes sociales: </h4>
+                  <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item">
+                      <a href="https://www.instagram.com" style="text-decoration:none;"> <img src="{% static 'img/instagram.svg' %}" alt="Instagram" style="margin-right: 5px;">Instagram</a>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="https://twitter.com" style="text-decoration:none;"> <img src="{% static 'img/twitter-x.svg' %}" alt="Twitter" style="margin-right: 5px;">Twitter</a>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="https://www.youtube.com" style="text-decoration:none;"> <img src="{% static 'img/youtube.svg' %}" alt="Youtube" style="margin-right: 5px;">Youtube</a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container pb-5">
+          <div class="row justify-content-center">
+            <div class="col-lg-6 col-sm-10">
+              <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/zhKifOulpb0?si=W3hxawvKCZavftai" title="YouTube video player" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <h1>Comentarios sobre El Zorzal!</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Comentario</th>
+              </tr>
+            </thead>
+            <tbody id="comentarios">
+
+            </tbody>
+          </table>
+        </div>
+{% endblock %}

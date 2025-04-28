@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Eliminar {% endblock %}
+
+{% block content %}
+    <h2 style="text-align: center;">Eliminando Producto!</h2>
+    <br>
+    <form action="#" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                {% if pan.imagen %}
+                    <img src="{{ pan.imagen.url }}" style="width: 200px; height: 200px;" class="card-img-top mx-auto d-block rounded mt-3">
+                {% else %}
+                    <h5 style="color:red">Producto sin foto</h5>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title text-center">Id Producto: {{ pan.idProducto }}</h5>
+                    <p class="card-text"><b> Nombre producto:</b> {{pan.nomProducto }}</p>
+                    <p class="card-text"><b> Descripcion:</b> {{ pan.descProducto}}</p>
+                    <p class="card-text"><b> Precio:</b> {{ pan.precio}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 mb-3">
+                <input type="submit" value="Confirmar Eliminación" name="elimina" class="btn btn-danger w-100">
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+                <a href="{% url 'modificar' pan.idProducto %}" class="btn btn-warning w-100">Modificar</a>
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+                <a href="{% url 'productos' %}" class="btn btn-outline-info w-100">Cancelar</a>
+            </div>
+        </div>
+    </div>
+    </form>
+    
+{% endblock %}

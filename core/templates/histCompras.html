@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+
+{% block title %}Todas las Compras{% endblock %}
+
+{% block active-hist %}
+<a class="nav-link active" href="{% url 'historial' %}">Historial de Compra</a>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Todas las Compras</h2>
+    {% if page_obj %}
+        {% for compra in page_obj %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Boleta N°: {{ compra.id_boleta }}</h5>
+                <p>Cliente: {{ compra.user.username }} ({{ compra.user.email }})</p>
+                <p>Fecha de Compra: {{ compra.fechaCompra }}</p>
+                <p>Total: ${{ compra.total }}</p>
+                <p>Estado: {{ compra.get_estado_display }}</p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Productos Adquiridos</h5>
+                <ul class="list-group list-group-flush">
+                    {% for detalle in compra.detalle_boleta_set.all %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ detalle.id_producto.nomProducto }} (Cantidad: {{ detalle.cantidad }})
+                        <span class="badge bg-primary rounded-pill">${{ detalle.subtotal }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="row justify-content-center mt-4">
+            <div class="col-auto">
+                <div class="pagination mb-4">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; primero</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">siguiente</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">último &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No se han realizado compras.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Tienda {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    {% if messages %}
+        <div class="row">
+            <div class="col-12">
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    <h2> Tienda </h2><br>
+    <form method="GET" action="{% url 'buscar' %}" class="mb-4 d-flex justify-content-end">
+        <input type="text" name="q" class="form-control me-2" placeholder="Buscar productos...">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row" style="padding: 5px 0;">
+                <div class="col-12">
+                    <div class="row">
+                        {% for producto in page_obj %}
+                        <div class="col-6">
+                            <div class="card text-center">
+                                {% if producto.imagen %}
+                                    <img src="{{ producto.imagen.url }}" class="card-img-top mx-auto">
+                                {% else %}
+                                    <img src="{% static 'img/sinfoto.webp' %}" class="card-img-top mx-auto">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title" style="font-weight:bold;"> Código : {{ producto.idProducto }}</h5>
+                                    <p class="card-text">Nombre : {{ producto.nomProducto }}<br></p>
+                                    <p class="card-text">Precio:$ {{ producto.precio }}<br></p>
+                                    <a href="{% url 'agregar' producto.idProducto %}" class="btn btn-outline-success">Agregar al carro</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4 ">
+                <div class="col-auto">
+                    <div class="pagination mb-4">
+                        <span class="step-links">
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1">&laquo; primero</a>
+                                <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                            </span>
+
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">siguiente</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}">último &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            {% include "carrito.html" %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

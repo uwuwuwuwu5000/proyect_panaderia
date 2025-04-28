@@ -1,0 +1,75 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Modificar Curso {% endblock %}
+
+{% block active-cursos %}
+<a class="nav-link active" aria-current="page" href="{% url 'cursos' %}">Cursos</a>
+{% endblock %}
+
+{% block content %}
+    <h2 style="text-align: center;">Modificando Curso</h2>
+    <br>
+    <div class="container">
+        
+    <form action="#" method="POST" id="formCursoM" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- {{ formModificar.as_p }} -->
+        
+        <div class="form-group mb-3">
+            {{ formModificar.idCurso.label }}
+            {{ formModificar.idCurso}}
+        </div>
+        <div class="form-group mb-3">
+            {{ formModificar.nomCurso.label }}
+            {{ formModificar.nomCurso }}
+        </div>
+        <div class="form-group mb-3">
+            {{ formModificar.descCurso.label }}
+            {{ formModificar.descCurso }}
+        </div>
+        <div class="form-group mb-3">
+            {{ formModificar.precioCurso.label }}
+            {{ formModificar.precioCurso }}
+        </div>
+        <div class="form-group mb-3">
+            {{ formModificar.duracion.label }}
+            {{ formModificar.duracion }}
+        </div>
+        <div class="form-group mb-3">
+            {{ formModificar.cupos.label }}
+            {{ formModificar.cupos }}
+        </div>
+        <div class="form-group mb-3">
+            {{ formModificar.horario.label }}
+            {{ formModificar.horario }}
+        </div>
+        <div class="row">
+            <div class="form-group mb-3 col-md ">
+                {{ formModificar.fechaInicio.label }}
+                {{ formModificar.fechaInicio }}
+            </div>
+            <div class="form-group mb-3 col-md">
+                {{ formModificar.fechaTermino.label }}
+                {{ formModificar.fechaTermino }}
+            </div>
+        </div>
+        {% if formModificar.img %}
+            <div class="py-2">
+                <img src="{{ curso.img.url }}" style="width: 80px; height: 80px;">
+            </div>
+        {% else %}
+            <h5 style="color:red">Producto sin foto</h5>
+        {% endif %}
+        <div class="form-group">
+            {{ formModificar.img.label }}
+            {{ formModificar.img }}
+        </div>
+        
+        <input type="submit" value="Modificar" class="btn btn-success my-3">
+        <a href="{% url 'cursos' %}" class="btn btn-warning my-3">Cancelar</a>
+    </form>
+    </div>
+
+{% endblock %}

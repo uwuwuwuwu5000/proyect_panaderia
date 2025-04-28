@@ -1,0 +1,59 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Crear Curso {% endblock %}
+
+{% block content %}
+    <h2 style="text-align: center;">Nuevo Curso</h2>
+    <div class="container">
+        <form action="#" method="POST" id="formCurso" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <div class="form-group mb-3">
+                {{ curForm.idCurso.label }}
+                {{ curForm.idCurso }}
+            </div>
+            <div class="form-group mb-3">
+                {{ curForm.nomCurso.label }}
+                {{ curForm.nomCurso }}
+            </div>
+            <div class="form-group mb-3">
+                {{ curForm.descCurso.label }}
+                {{ curForm.descCurso }}
+            </div>
+            <div class="form-group mb-3">
+                {{ curForm.precioCurso.label }}
+                {{ curForm.precioCurso }}
+            </div>
+            <div class="form-group mb-3">
+                {{ curForm.duracion.label }}
+                {{ curForm.duracion }}
+            </div>
+            <div class="form-group mb-3">
+                {{ curForm.cupos.label }}
+                {{ curForm.cupos }}
+            </div>
+            <div class="form-group mb-3">
+                {{ curForm.horario.label }}
+                {{ curForm.horario }}
+            </div>
+            <div class="row">
+                <div class="form-group mb-3 col-md ">
+                    {{ curForm.fechaInicio.label }}
+                    {{ curForm.fechaInicio }}
+                </div>
+                <div class="form-group mb-3 col-md">
+                    {{ curForm.fechaTermino.label }}
+                    {{ curForm.fechaTermino }}
+                </div>
+            </div>
+            <div class="form-group mb-3">
+            {{ curForm.img.label }}
+            {{ curForm.img }}
+            </div>
+            <input type="submit" value="Almacenar" class="btn btn-success my-3">
+            <a href="{% url 'cursos' %}" class="btn btn-danger">Cancelar</a>      
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Eliminar {% endblock %}
+
+{% block content %}
+    <h2 style="text-align: center;">Editando Productos</h2>
+    <div class="container">
+        <form action="#" method="POST" id="formProd" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                {{ forModificar.idProducto.label }}
+                {{ forModificar.idProducto }}
+            </div>
+            <div class="form-group">
+                {{ forModificar.nomProducto.label }}
+                {{ forModificar.nomProducto }}
+            </div>
+            <div class="form-group">
+                {{ forModificar.descProducto.label }}
+                {{ forModificar.descProducto }}
+            </div>
+            {% if forModificar.imagen %}
+                <img src="{{ pan.imagen.url }}" style="width: 80px; height: 80px;" class="my-2">
+            {% else %}
+                <h5 style="color:red">Producto sin foto</h5>
+            {% endif %}
+            <div class="form-group">
+                {{ forModificar.imagen.label }}
+                {{ forModificar.imagen }}
+            </div>
+            <div class="form-group">
+                {{ forModificar.precio.label }}
+                {{ forModificar.precio }}
+            </div>
+            <div class="form-group">
+                {{ forModificar.stock.label }}
+                {{ forModificar.stock }}
+            </div>
+            <input type="submit" value="Modificar" class="btn btn-success my-3">
+            <a href="{% url 'productos' %}" class="btn btn-outline-info my-3">Ir a Productos</a>
+        </form>
+    </div>
+{% endblock %}

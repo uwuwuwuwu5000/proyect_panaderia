@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+
+{% block title %}Resultados de Búsqueda{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Resultados de Búsqueda</h2>
+    <p>Búsqueda para: "{{ query }}"</p>
+    <div class="row">
+        {% for producto in resultados %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nomProducto }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ producto.nomProducto }}</h5>
+                    <p class="card-text">{{ producto.descProducto }}</p>
+                    <p class="card-text">${{ producto.precio }}</p>
+                    <p class="card-text">Stock: {{ producto.stock }}</p>
+                    <div class="mt-auto d-flex justify-content-end">
+                        <a href="{% url 'tienda' %}" class="btn btn-primary my-1 mx-1">Ver tienda</a>
+                        <a href="{% url 'productos' %}" class="btn btn-secondary my-1 mx-1">Ver catálogo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No se encontraron productos que coincidan con tu búsqueda.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

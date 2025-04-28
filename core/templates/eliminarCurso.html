@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Modificar Curso {% endblock %}
+
+{% block active-cursos %}
+<a class="nav-link active" aria-current="page" href="{% url 'cursos' %}">Cursos</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h2 style="text-align: center;">Eliminando Curso!</h2>
+    <br>
+    <form action="#" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                {% if curso.img %}
+                    <img src="{{ curso.img.url }}" style="width: 200px; height: 200px;" class="card-img-top mx-auto d-block rounded mt-3">
+                {% else %}
+                    <h5 style="color:red">Producto sin foto</h5>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title text-center">Id Curso: {{ curso.idCurso }}</h5>
+                    <p class="card-text"><b> Nombre Curso:</b> {{curso.nomCurso }}</p>
+                    <p class="card-text"><b> Descripcion:</b> {{ curso.descCurso}}</p>
+                    <p class="card-text"><b> Precio:</b> {{ curso.precioCurso}}</p>
+                    <p class="card-text"><b> Horario:</b> {{ curso.horario }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mx-auto justify-content-center row">
+        <input type="submit" value="Confirmar Eliminación" name="elimina" class="btn btn-danger my-3 col-md-4">
+        <a href="{% url 'modificarCurso' curso.idCurso %}" class="btn btn-warning my-3 ms-4 col-md-4">Modificar</a>
+        <a href="{% url 'cursos' %}" class="btn btn-outline-info my-3 col-md-4">Cancelar</a>
+    </div>
+
+    </form>
+</div>
+
+
+{% endblock %}

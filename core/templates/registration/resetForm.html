@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Restablecer Contraseña {% endblock %}
+
+{% block content %}
+<br>
+<h2 style="text-align: center;">Restablecer Contraseña</h2><br>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                {% if validlink %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="new_password1">Nueva Contraseña: </label><br>
+                            {{ form.new_password1 }}
+                        </div>
+                        <div class="form-group">
+                            <label for="new_password2">Confirmar Nueva Contraseña: </label><br>
+                            {{ form.new_password2 }}
+                        </div>
+                        <input type="submit" value="Restablecer" class="btn btn-outline-primary" style="float: right;">
+                    </form>
+                {% else %}
+                    <p>El enlace de restablecimiento de contraseña es inválido o ha expirado.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

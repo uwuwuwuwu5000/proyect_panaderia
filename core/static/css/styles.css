@@ -1,0 +1,109 @@
+:root{
+    --gris: #e1e1e1;
+    --cafe:#653604;
+    --cafe2:#683807;
+    --naranja-intenso:#F8A548;
+    --crema:#EDDDCC;
+    --naranja-opaco:#D58735;
+}
+
+/**HEADER**/
+.navbar{
+    background-color: var(--crema);
+}
+
+.nav-item{
+    font-weight: 600;
+}
+
+.reloj{
+    font-weight: 700;
+    color: var(--cafe);
+    font-size: 18px;
+}
+
+/**INDEX**/
+.carousel-item img{
+    margin:auto;
+    display:block;
+    
+}
+
+.cursos-title{
+    background-color: var(--crema);
+    color: var(--cafe);
+}
+
+.card-title-curso{
+    font-weight: 600;
+}
+
+
+/**PRODUCTOS**/
+.card {
+    margin-bottom: 20px;
+}
+
+
+/**Nosotros**/
+img.chef{
+    width: 300px;
+    height:300px;
+}
+
+/**CURSO**/
+
+.texto-curso{
+    border-bottom: 2px solid var(--gris);
+    padding-top: 2rem 0;
+}
+
+.inscripcion-bg{ 
+    background-image:url(../img/imagen-carrusel.png);
+    height: 20rem;
+    background-repeat: no-repeat;
+    background-position: start center;
+    
+}
+
+@media (min-width: 992px) {
+    .inscripcion-bg{ 
+        background-position: center center;
+    }
+}
+
+.formulario{
+    width: 80%;
+    margin: -5rem auto 3rem auto;
+    background-color: #ffffff;
+    
+}
+
+.inscripcion__text{
+    color: #ffffff;
+    padding-top: 3rem;
+    text-align: center;
+}
+
+.curso-img{
+    border: 2px solid var(--cafe2) ;
+    border-radius: 0.3rem;
+}
+
+.error{
+    color: red;
+    font-weight: 700;
+}
+/**FOOTER**/
+
+.footer{
+    background-color: #181313;
+    color: #ffffff;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+}
+
+/**Para commit final**/

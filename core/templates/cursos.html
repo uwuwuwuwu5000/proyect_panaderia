@@ -1,0 +1,129 @@
+{% extends "base/base.html" %}
+   
+{% load static %}
+
+{% block title %} Cursos {% endblock %}
+
+{% block active-cursos %}
+<a class="nav-link active" aria-current="page" href="{% url 'cursos' %}">Cursos</a>
+{% endblock %}
+
+{% block content %}
+        <div class="container"> <!--OFERTA DE CURSOS-->
+            <h1 class="text-center text-uppercase"><b>Nuestros cursos</b></h1>
+            <p class="text-center"><b>BIENVENIDO!!</b> a continuacion te presentamos nuestra oferta de cursos.</p>
+            <p class="text-center">Para acceder a cualquiera de nuestros cursos deberás rellenar el formulario al final de la página.</p>
+            <div id="cursos-body"></div>
+        </div>
+            <div class="container">
+
+                {% for curso in cursos %}
+                <div class="row mx-2 py-3">
+                    <img src="{{ curso.img.url }}" class="col-lg-4 img-fluid curso-img px-0" alt="curso">
+                    <div class="col texto-curso">
+                        <h3 class="text-start"><b> {{ curso.nomCurso }}</b></h3>
+                        <p>{{ curso.descCurso }}</p>
+                        <p>Precio: ${{ curso.precioCurso }}</p>
+                        <p>Duracion: {{ curso.duracion }}</p>
+                        <p>Cupos: {{ curso.cupos }}</p>
+                        <p>Horarios: {{ curso.get_horario_display }}</p>
+                        <p>Fecha inicio: {{ curso.fechaInicio|date:"D, j M Y" }}</p>
+                        {% if curso.fechaTermino %}
+                            <p>Fecha termino: {{ curso.fechaTermino|date:"D, j M Y" }}</p>
+                        {% else %}
+                            <p>Fecha Termino: Por confimar</p>
+                        {% endif %}    
+                        {% if user.is_staff %}
+                            <a href="{% url 'modificarCurso' curso.idCurso %}" class="btn btn-warning my-1">Modificar</a>
+                            <a href="{% url 'eliminarCurso' curso.idCurso %}" class="btn btn-danger my-1">Eliminar</a>
+                        {% endif %}
+                    </div>
+                </div>  
+                {% endfor %}  
+                {% if user.is_staff %}
+                    <a href="{% url 'crearCurso' %}" class="btn col-12 d-sm-grid col-md-6 mx-auto my-3 btn-info" style="font-weight: 700;">Crear Nuevo Curso</a>
+                {% endif %}
+            </div>
+        
+        <!-- Formulario Titulo -->
+        <div class="container mt-4">
+            <h3 class="text-center text-uppercase"><b>Formulario Inscripción</b></h3>
+            <div class="inscripcion-bg">
+                <div class="container inscripcion__text">
+                    <h3><b>Rellena este formulario y nosotros te contactaremos a la brevedad.</b></h3>
+                </div>
+            </div>
+
+        <!-- Formulario -->
+            <form class="formulario rounded" id="cursoForm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md">
+                            <label class="form-label" for="nombre">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre" >
+                        </div>
+                        <div class="col-md">
+                            <label class="form-label" for="apellido">Apellido</label>
+                            <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="apellido" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label" for="email">Correo electrónico</label>
+                            <input type="text" class="form-control" placeholder="Correo electrónico" id="email" name="email" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label" for="direccion">Dirección</label>
+                            <input type="text" class="form-control" placeholder="Dirección" id="direccion" name="direccion">
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-4">
+                        <label class="form-label" for="edad">Edad</label>
+                        <input type="text" class="form-control" placeholder="Edad" id="edad" name="edad" >
+                       </div>
+                       <div class="col">
+                        <label class="form-label" for="sexo">Sexo</label>
+                        <select class="form-select" id="sexo" name="sexo">
+                            <option value="">Seleccione un genero</option>
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                            <option>Elle</option>
+                            <option>Prefiero no decirlo</option>
+                          </select> 
+                       </div>
+                    </div>  
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label" for="curso">Seleccione un curso</label>
+                            <select class="form-select" id="curso" name="curso">
+                                <option value="">--</option>
+                                <option>Curso: Panadería 101</option>
+                                <option>Curso Intermedio</option>
+                                <option>Curso Repostería</option>
+                              </select>
+
+
+                        </div>
+                        <div class="col">
+                            <div class="col">
+                                <label class="form-label" for="horario">Seleccione un horario</label>
+                                <select class="form-select" id="horario" name="horario">
+                                    <option value="">--</option>
+                                    <option>Tarde</option>
+                                    <option>Mañana</option>
+                                  </select> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div >
+                    <input type="submit" id="validarCurso" value="Enviar" class="btn col-12 d-sm-grid col-md-6 mx-auto btn-outline-dark my-3" style="font-weight: 700;">
+                </div>
+
+            </form>
+        </div>
+
+        {% endblock %}

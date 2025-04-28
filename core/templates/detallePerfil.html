@@ -1,0 +1,34 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block active-perfil %}
+<a class="nav-link active" href="{% url 'perfil' %}">Perfil: {{ user.email }}</a>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid justify-content-center my-5">
+    <div class="row justify-content-center">
+        <h2 style="text-align: center; text-decoration: underline;" class="mb-4">Información de Usuario</h2>
+        <div class="card shadow-sm w-100" style="max-width: 500px;">
+            <div class="card-body">
+                <h5 class="card-title">Usuario: {{ user.username }}</h5>
+                {% if user.first_name %}
+                    <p class="card-text">Primer Nombre: {{ user.first_name }}</p>
+                {% else %}
+                <p class="card-text">Sin primer nombre</p>
+                {% endif %}
+
+                {% if user.last_name %}
+                    <p class="card-text">Primer Apellido: {{ user.last_name }}</p>
+                {% else %}
+                    <p class="card-text">Sin primer apellido</p>
+                {% endif %}
+                <p class="card-text">Email: {{ user.email }}</p>
+                <a href="{% url 'modPerfil' %}" class="btn btn-warning btn-sm">Modificar datos</a>
+                <a href="{% url 'index' %}" class="btn btn-primary btn-sm">Volver al inicio</a>
+            </div>
+        </div>
+{% endblock %}

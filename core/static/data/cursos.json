@@ -1,0 +1,38 @@
+{
+    "cursos": [
+        {
+            "id":"1",
+            "nombre": "Panadería 101",
+            "descripcion":"En este curso aprenderás las técnicas básicas de la panadería, al finalizar el curso saldrás con los conocimientos básicos para preparar pan.",
+            "precio":"$55.000",
+            "duracion":"3 dias",
+            "cupos": "20 Cupos",
+            "horario":"Mañana 08:00 - 12:00 / Tarde 17:00 - 21:00",
+            "fecha":"14 - 16 - 18 de mayo 2024",
+            "img": "img//Curso_Principiantes.png"
+        },
+        {
+            "id":"2",
+            "nombre": "Curso Intermedio",
+            "descripcion":"En este curso aprenderás recetas más elaboradas de panadería. Podrás perfeccionar tus habilidades preparando recetas tradicionales de otras culturas.",
+            "precio":"$75.000",
+            "duracion":"6 dias",
+            "cupos": "20 Cupos",
+            "horario":"Mañana 08:00 - 12:00 / Tarde 17:00 - 21:00",
+            "fecha":"20 - 22 - 24 - 27 - 29 - 31 de mayo 2024",
+            "img":"img/Curso_Intermedio.png"
+            
+        },
+        {
+            "id":"3",
+            "nombre": "Repostería básica",
+            "descripcion":"En este curso aprenderás las técnicas más básicas de repostería, las cuales te ayudarán a expandir tus habilidades culinarias. No necesitas de experiencia previa, solo debes contar de tu creatividad y disposición para aprender.",
+            "precio":"$65.000",
+            "duracion":"4 dias",
+            "cupos": "15 Cupos",
+            "horario":"Mañana 08:00 - 12:00 / Tarde 17:00 - 21:00",
+            "fecha":"04 - 06 - 08 - 10 de junio 2024",
+            "img":"img/respoteria.jpg"
+        }
+    ]
+}

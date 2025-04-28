@@ -1,0 +1,135 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Productos {% endblock %}
+
+{% block active-productos %}
+<a class="nav-link active" href="{% url 'productos' %}">Productos</a>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-5 py-3">
+  <form method="GET" action="{% url 'buscar' %}" class="mb-4 d-flex justify-content-end">
+    <input type="text" name="q" class="form-control me-2" placeholder="Buscar productos...">
+    <button type="submit" class="btn btn-primary">Buscar</button>
+  </form>
+  <div class="row">
+    {% for pan in page_obj %}
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+        <div class="card">
+            <img src="{{ pan.imagen.url }}" class="card-img-top" alt="{{ pan.nomProducto }}" data-bs-toggle="collapse" href="#colapso{{ pan.idProducto }}" aria-expanded="false" aria-controls="colapso{{ pan.idProducto }}">
+            <div class="collapse" id="colapso{{ pan.idProducto }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pan.nomProducto }}</h5>
+                    <p class="card-text">{{ pan.descProducto }}</p>
+                    <p class="fs-5 text-end">${{ pan.precio }}</p>
+                    {% if user.is_staff %}
+                      <a href="#" class="btn btn-info my-1">{{ pan.idProducto }}</a>
+                      <a href="{% url 'eliminarP' pan.idProducto %}" class="btn btn-danger my-1">Eliminar</a>
+                      <a href="{% url 'modificar' pan.idProducto %}" class="btn btn-warning my-1">Modificar</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row justify-content-end">
+    <div class="col-auto">
+      {% if user.is_staff %}
+        <a href="{% url 'crear' %}" class="btn btn-info">Crear nuevo Producto</a>
+      {% else %}
+        <p></p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Paginación -->
+  <div class="pagination justify-content-center">
+    <span class="step-links">
+      {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; primero</a>
+        <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
+      {% endif %}
+
+      <span class="current">
+        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">siguiente</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">último &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+</div>
+<hr class="border border-3 border-dark">
+<div class="container-fluid my-5 pb-3">
+<h1 class="mb-5">Promociones</h1>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center">
+  <div class="col mt-0">
+      <div class="card">
+          <img src="{% static 'img/Promo_Ciabatta.png' %}" class="card-img-top" alt="..." data-bs-toggle="collapse" href="#colapso9" aria-expanded="false" aria-controls="colapso">
+          <div class="collapse" id="colapso9">
+              <div class="card-body">
+                  <h5 class="card-title">Oferta Semanal</h5>
+                  <p class="card-text">Lleva 3 de nuestras Ciabattas y paga solo por 2!</p>
+                  <p class="fs-5 text-end"> $2.380</p>
+                </div>
+          </div>
+      </div>
+  </div>
+  <div class="col mt-0">
+      <div class="card">
+          <img src="{% static 'img/Pan_Cruzado.png' %}" class="card-img-top" alt="..." data-bs-toggle="collapse" href="#colapso10" aria-expanded="false" aria-controls="colapso2">
+          <div class="collapse" id="colapso10">
+              <div class="card-body">
+                  <h5 class="card-title">Especial de Semana Santa</h5>
+                  <p class="card-text">Celebra la Semana Santa con nuestro delicioso Pan de Cruz. ¡Disponible por tiempo Limitado!</p>
+                  <p class="fs-5 text-end"> $550</p>
+                </div>
+          </div>
+      </div>
+  </div>
+  <div class="col mt-0">
+      <div class="card">
+          <img src="{% static 'img/Promo_Seleccion.png' %}" class="card-img-top" alt="..." data-bs-toggle="collapse" href="#colapso11" aria-expanded="false" aria-controls="colapso3">
+          <div class="collapse" id="colapso11">
+              <div class="card-body">
+                  <h5 class="card-title">Selección del Zorzal</h5>
+                  <p class="card-text">Un grupo de nuestros productos escogidos para que pruebes dos de nuestros últimos productos añadidos y dos productos escogidos
+                    por nosotros.
+                  </p>
+                  <p class="fs-3 text-center">Productos incluidos:</p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Challah x1</li>
+                    <li class="list-group-item">Focaccia x1</li>
+                    <li class="list-group-item">Pan de Masa Madre x1</li>
+                    <li class="list-group-item">Baguette x1</li>
+                  </ul>
+                  <p class="fs-5 text-end"> $5.200</p>
+                </div>
+          </div>
+      </div>
+  </div>
+  <div class="col mt-0">
+      <div class="card">
+          <img src="{% static 'img/Promo_Zorzal.png' %}" class="card-img-top" alt="..." data-bs-toggle="collapse" href="#colapso12" aria-expanded="false" aria-controls="colapso4">
+          <div class="collapse" id="colapso12">
+              <div class="card-body">
+                <h5 class="card-title">Especial El<b>Zorzal</b></h5>
+                <p class="card-text">Promoción de nuestros productos más comprados por nuestros clientes:</p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Baguette x3</li>
+                  <li class="list-group-item">Challah x3</li>
+                  <li class="list-group-item">Pan de Masa Madre x2</li>
+                </ul>
+                <p class="fs-5 text-end"> $11.130</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>  
+{% endblock %}

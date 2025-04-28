@@ -1,0 +1,40 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block content %}
+    <h2 style="text-align: center;">Creando Producto</h2>
+    <div class="container">
+        <form action="#" method="POST" id="formProdC" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <div class="form-group">
+                {{ prodform.idProducto.label }}
+                {{ prodform.idProducto }}
+            </div>
+            <div class="form-group">
+                {{ prodform.nomProducto.label }}
+                {{ prodform.nomProducto }}
+            </div>
+            <div class="form-group">
+                {{ prodform.descProducto.label }}
+                {{ prodform.descProducto }}
+            </div>
+            <div class="form-group">
+                {{ prodform.imagen.label }}
+                {{ prodform.imagen }}
+            </div>
+            <div class="form-group">
+                {{ prodform.precio.label }}
+                {{ prodform.precio }}
+            </div>
+            <div class="form-group">
+                {{ prodform.stock.label }}
+                {{ prodform.stock }}
+            </div>
+            <input type="submit" value="Almacenar" class="btn btn-success my-3">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Editar Perfil {% endblock %}
+
+{% block content %}
+<div class="container-fluid justify-content-center my-5">
+    <div class="row justify-content-center">
+        <h2 style="text-align: center; text-decoration: underline;" class="mb-4">Editar Datos</h2>
+        <div class="card shadow-sm w-100" style="max-width: 500px;">
+            <div class="card-body">
+                <form action="#" method="POST" id="modPerfil">
+                    {% csrf_token %}
+                    <div class="form-group my-1">
+                        <label class="form-label" for="username">Username:</label><br>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group my-1">
+                        <label class="form-label" for="first_name">Nombre:</label><br>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="form-group my-1">
+                        <label class="form-label" for="last_name">Apellido:</label><br>
+                        {{ form.last_name }}
+                    </div>
+                    <div class="form-group my-1">
+                        <label class="form-label" for="email">Correo Electrónico:</label><br>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group my-1">
+                        <label class="form-label" for="password1">Contraseña:</label><br>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-group my-1">
+                        <label class="form-label" for="password2">Repita la contraseña:</label><br>
+                        {{ form.password2 }}
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Guardar Cambios">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

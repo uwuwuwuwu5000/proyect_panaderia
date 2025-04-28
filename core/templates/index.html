@@ -1,0 +1,156 @@
+
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block active-index %}  
+<a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
+{% endblock %}
+
+{% block content %}
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col">
+              <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{% static 'img/imagen-carrusel.png' %}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'img/imagen-2.png' %}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'img/imagen-3.png' %}" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Siguiente</span>
+                </button>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-2">
+      <div class="container"> <!--PARTE DE NUEVOS PRODUCTOS mod entrega final-->
+        <h1 class="text-uppercase text-center mw-100 bg-warning"><b>Nuevos productos</b></h1>
+        <p class="text-center fs-5 fst-italic">¡Conoce los últimos productos añadidos a nuestra selección!</p>
+        <div class="row justify-content-center">
+          <div class="card col-md mx-2 border border-success border-3">
+            <img src="{% static 'img/Focaccia.png' %}" class="mx-auto d-block card-img-top mt-2 rounded" alt="Focaccia destacada">
+              <div class="card-body">
+                <h5 class="card-title">Focaccia</h5>
+                <p class="card-text">La Focaccia es excelente para acompañar el almuerzo o para servirse como aperitivo, junto a encurtidos o similares.</p>
+                <div class="container text-end pt-3">
+                  <a href="{% url 'productos' %}" class="btn btn-sm btn-success">Ver en tienda</a>
+                </div>
+              </div>
+          </div>
+          <div class="card col-md mx-2 border border-success border-3">
+            <img src="{% static 'img/Challah-bigger.png' %}" class="mx-auto d-block card-img-top mt-2 rounded" alt="Focaccia destacada">
+              <div class="card-body">
+                <h5 class="card-title">Challah</h5>
+                <p class="card-text">Pan trenzado cuya textura suave y ligeramente dulce lo hace perfecto para disfrutarlo tostado con mantequilla,
+                  como base para sándwiches gourmet o incluso para otras preparaciones como las tostadas a la francesa.</p>
+                <div class="container text-end">
+                  <a href="{% url 'productos' %}" class="btn btn-sm btn-success">Ver en tienda</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="container"> <!--PARTE DE CURSOS-->
+        <h1 class="text-upeercase text-center mw-100 cursos-title"><b>Próximos cursos</b></h1>
+        <p class="text-center">Adéntrate en el mundo de la cocina y aprende con nosotros. No importa si eres un completo principiante o alguien que ya tiene algo de experiencia ¡Tenemos un curso para ti! </p>
+        <div class="row justify-content-center">
+          <div class="card col-md mx-2">
+            <img src="{% static 'img/Curso_Principiantes.png' %}" alt="curso" class="mx-auto d-block card-img-top mt-2 rounded">
+            <div class="card-body">
+              <h4 class="card-title card-title-curso">Curso: Panadería 101</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Duración: </b>3 días</li>
+              <li class="list-group-item"><b>Cupos: </b>20</li>
+              <li class="list-group-item"><b>Precio: </b>$55.000</li>
+            </ul>
+          </div>
+          <div class="card col-md mx-2">
+            <img src="{% static 'img/Curso_Intermedio.png' %}" alt="curso" class="mx-auto d-block card-img-top mt-2 rounded" >
+            <div class="card-body">
+              <h4 class="card-title card-title-curso">Curso Intermedio</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Duración: </b>6 días</li>
+              <li class="list-group-item"><b>Cupos: </b>20</li>
+              <li class="list-group-item"><b>Precio: </b>$75.000</li>
+            </ul>
+          </div>
+          <div class="card col-md mx-2">
+            <img src="{% static 'img/respoteria.jpg' %}" alt="curso" class="mx-auto d-block card-img-top mt-2 rounded" >
+            <div class="card-body">
+              <h4 class="card-title card-title-curso">Repostería básica</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Duración: </b>4 días</li>
+              <li class="list-group-item"><b>Cupos: </b>15</li>
+              <li class="list-group-item"><b>Precio: </b>$65.000</li>
+            </ul>
+          </div>
+        </div>
+        <a href="{% url 'cursos' %}" style="text-decoration: none;"><button class="btn col-12 d-sm-grid col-md-6 mx-auto btn-outline-dark my-3"><b>Ver más</b></button></a>
+      </div> <!--Aqui termina parte cursos-->
+    </div>
+    <hr>
+    <div class="container my-2">
+      <h1 class="text-uppercase text-center mw-100 bg-warning">Suscríbase a nuestro boletín mensual!</h1>
+      <p class="text-center fs-5 fst-italic">Así siempre estará al tanto de nuevas ofertas, productos y cambios en la panadería</p>
+      <form id="bol">
+        <div class="container">
+          <div class="row">
+            <div class="col-md">
+              <label for="noms" class="form-label">Primer nombre</label>
+              <input type="text" class="form-control" id="noms" name="noms" placeholder="Ingrese sus nombres..." required>
+            </div>
+            <div class="col-md">
+              <label for="apes" class="form-label">Primer apellido</label>
+              <input type="text" class="form-control" id="apes" name="apes" placeholder="Ingrese sus apellidos..." required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="mail" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="mail" name="mail" placeholder="Ingrese su email..." required>
+            </div>
+          </div>
+          <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
+              <label for="fono" class="form-label">Número de Celular</label>
+              <input type="number" class="form-control" id="fono" name="fono" placeholder="971253153" minlength="9" required>
+            </div>
+            <div class="col">
+              <label for="genero" class="form-label">Género</label>
+              <select name="genero" id="genero" class="form-select" required>
+                <option value="">Seleccione su género</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+                <option value="3">Otro</option>
+              </select>
+            </div>
+          </div>
+          <input type="submit" class="btn btn-outline-dark my-3" value="Suscribirse" style="font-weight:bold;">
+        </div>
+      </form>
+    </div>
+{% endblock %}

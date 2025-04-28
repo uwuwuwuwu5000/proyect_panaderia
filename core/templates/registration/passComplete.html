@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %} Contraseña Restablecida {% endblock %}
+
+{% block content %}
+<br>
+<h2 style="text-align: center;">Contraseña Restablecida</h2><br>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <p>Tu contraseña ha sido restablecida con éxito. Ahora puedes <a href="{% url 'login' %}">iniciar sesión</a> con tu nueva contraseña.</p>
+                <a href="{% url 'index' %}" class="btn btn-outline-primary" style="float: right;">Volver al Inicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
